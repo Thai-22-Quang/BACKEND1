@@ -3,11 +3,13 @@ const cors = require("cors");
 
 const app = express();
 
-// Middleware
+
 app.use(cors());
 app.use(express.json());
 
-// Một route test đơn giản
+const contactsRouter = require("./app/routes/contact.route");
+app.use("/api/contacts", contactsRouter);
+
 app.get("/", (req, res) => {
   res.json({ message: "Xin chào, đây là ứng dụng ContactBook!" });
 });
